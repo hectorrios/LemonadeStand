@@ -10,6 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var haveMoneyLabel: UILabel!
+    
+    @IBOutlet weak var haveNumerOfLeminsLabel: UILabel!
+    
+    @IBOutlet weak var haveNumberOfIceCubesLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
