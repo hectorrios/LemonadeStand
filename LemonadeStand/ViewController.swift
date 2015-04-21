@@ -18,6 +18,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var haveNumberOfIceCubesLabel: UILabel!
     
     
+    @IBOutlet weak var purchasedLemonsLabel: UILabel!
+    
+    
+    @IBOutlet weak var purchaseIceCubesLabel: UILabel!
+    
+    
+    @IBOutlet weak var lemonsMixLabel: UILabel!
+    
+    
+    @IBOutlet weak var iceCubesMixLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +39,51 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: IBActions
+    
+    
+    @IBAction func purchaseLemonAddButtonPressed(sender: UIButton) {
+    }
+    
+    
+    @IBAction func purchaseLemonDeleteButtonPressed(sender: UIButton) {
+    }
 
+    
+    @IBAction func purchaseIceCubeAddButtonPressed(sender: UIButton) {
+    }
+    
+    
+    @IBAction func purchaseIceCubeDeleteButtonPressed(sender: UIButton) {
+    }
+    
+    
+    @IBAction func mixLemonsAddButtonPressed(sender: UIButton) {
+    }
+    
+    
+    @IBAction func mixLemonsDeleteButtonPressed(sender: UIButton) {
+    }
+    
+    
+    @IBAction func mixIceCubesAddButtonPressed(sender: UIButton) {
+    }
+    
+    
+    @IBAction func mixIceCubesDeleteButtonPressed(sender: UIButton) {
+    }
+
+    
+    @IBAction func startDayButtonPressed(sender: UIButton) {
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 

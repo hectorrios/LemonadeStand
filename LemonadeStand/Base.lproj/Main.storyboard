@@ -56,6 +56,9 @@
                                 <rect key="frame" x="168" y="151" width="22" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="purchaseLemonAddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CZc-7o-7fI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1R8-M7-UdJ">
                                 <rect key="frame" x="207" y="153" width="34" height="21"/>
@@ -69,6 +72,9 @@
                                 <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="purchaseLemonDeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D6W-ig-UUx"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ice Cubes for $1:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9v-3d-WXV">
                                 <rect key="frame" x="22" y="189" width="154" height="21"/>
@@ -82,6 +88,9 @@
                                 <state key="normal" title="+">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="purchaseIceCubeAddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4l4-EF-Aco"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTH-VW-asF">
                                 <rect key="frame" x="199" y="188" width="51" height="21"/>
@@ -95,6 +104,9 @@
                                 <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="purchaseIceCubeDeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SPi-MZ-sJG"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 2: Mix your lemonade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYd-x5-ecl">
                                 <rect key="frame" x="16" y="228" width="288" height="21"/>
@@ -120,6 +132,9 @@
                                 <state key="normal" title="+">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="mixLemonsAddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iB4-0r-v3C"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lec-r5-FQd">
                                 <rect key="frame" x="199" y="315" width="42" height="21"/>
@@ -133,6 +148,9 @@
                                 <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="mixLemonsDeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RyO-Et-7tV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ice Cubes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRC-YP-ayq">
                                 <rect key="frame" x="75" y="343" width="86" height="21"/>
@@ -146,6 +164,9 @@
                                 <state key="normal" title="+">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="mixIceCubesAddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TXT-It-qOI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojj-C0-eVb">
                                 <rect key="frame" x="198" y="343" width="45" height="21"/>
@@ -159,6 +180,9 @@
                                 <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="mixIceCubesDeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v9r-6s-8iR"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 3: Start selling your brew" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOI-k4-To0">
                                 <rect key="frame" x="16" y="380" width="288" height="21"/>
@@ -180,6 +204,9 @@
                                 <state key="normal" title="Start Day">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="startDayButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2QS-Sb-NaG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -189,6 +216,10 @@
                         <outlet property="haveMoneyLabel" destination="MdV-ct-nG1" id="0CI-Xs-fnI"/>
                         <outlet property="haveNumberOfIceCubesLabel" destination="6g3-it-Q3N" id="Lts-kS-Q9w"/>
                         <outlet property="haveNumerOfLeminsLabel" destination="saE-be-bll" id="jmV-fe-PTg"/>
+                        <outlet property="iceCubesMixLabel" destination="ojj-C0-eVb" id="QWz-ZZ-qS4"/>
+                        <outlet property="lemonsMixLabel" destination="Lec-r5-FQd" id="PQs-Gp-Lzi"/>
+                        <outlet property="purchaseIceCubesLabel" destination="DTH-VW-asF" id="tcu-z2-DJ7"/>
+                        <outlet property="purchasedLemonsLabel" destination="1R8-M7-UdJ" id="xUK-uT-EtP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
