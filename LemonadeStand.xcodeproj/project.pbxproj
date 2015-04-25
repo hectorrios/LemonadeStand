@@ -13,6 +13,7 @@
 		8C316F041AE67584002E65E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C316F031AE67584002E65E9 /* Images.xcassets */; };
 		8C316F071AE67584002E65E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C316F051AE67584002E65E9 /* LaunchScreen.xib */; };
 		8C316F131AE67584002E65E9 /* LemonadeStandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C316F121AE67584002E65E9 /* LemonadeStandTests.swift */; };
+		8C316F1D1AE69FED002E65E9 /* LemonadeDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C316F1C1AE69FED002E65E9 /* LemonadeDay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		8C316F0C1AE67584002E65E9 /* LemonadeStandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemonadeStandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C316F111AE67584002E65E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C316F121AE67584002E65E9 /* LemonadeStandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemonadeStandTests.swift; sourceTree = "<group>"; };
+		8C316F1C1AE69FED002E65E9 /* LemonadeDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LemonadeDay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				8C316EFC1AE67584002E65E9 /* AppDelegate.swift */,
 				8C316EFE1AE67584002E65E9 /* ViewController.swift */,
+				8C316F1C1AE69FED002E65E9 /* LemonadeDay.swift */,
 				8C316F001AE67584002E65E9 /* Main.storyboard */,
 				8C316F031AE67584002E65E9 /* Images.xcassets */,
 				8C316F051AE67584002E65E9 /* LaunchScreen.xib */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C316EFF1AE67584002E65E9 /* ViewController.swift in Sources */,
+				8C316F1D1AE69FED002E65E9 /* LemonadeDay.swift in Sources */,
 				8C316EFD1AE67584002E65E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
