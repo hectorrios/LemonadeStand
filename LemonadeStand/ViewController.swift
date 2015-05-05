@@ -40,9 +40,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        self.purchasedLemonsLabel.text = "\(self.lemonsPurchasedNumber)"
-        self.purchasedLemonsLabel.text = "\(lemonadeStand.lemons - 1)"
-        self.haveNumerOfLeminsLabel.text = "\(lemonadeStand.lemons)"
-        self.haveMoneyLabel.text = "\(haveMoneyAmount)"
+        self.updateLemonadeStandLabels(lemonadeStand)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,12 +52,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func purchaseLemonAddButtonPressed(sender: UIButton) {
-        println("The purchase button was pressed")
+//        println("The purchase button was pressed")
         
         //Determine if we have enough money?
         if (self.canBuyIngredient(lemonadeStand.budget, amoutOfIngredient: LemonPrice)) {
-            ++lemonadeStand.lemons
-            lemonadeStand.budget -= LemonPrice
+            lemonadeStand.purchaseLemon(1, price: LemonPrice)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
         
@@ -69,8 +66,7 @@ class ViewController: UIViewController {
     @IBAction func purchaseLemonDeleteButtonPressed(sender: UIButton) {
         
         if (lemonadeStand.lemons > 1) {
-            --lemonadeStand.lemons
-            lemonadeStand.budget += LemonPrice
+            lemonadeStand.unpurchaseLemon(1, price: LemonPrice)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
         
@@ -80,8 +76,7 @@ class ViewController: UIViewController {
     @IBAction func purchaseIceCubeAddButtonPressed(sender: UIButton) {
         //Determine if we have enough money
         if (self.canBuyIngredient(lemonadeStand.budget, amoutOfIngredient: 1)) {
-            lemonadeStand.iceCubes++
-            lemonadeStand.budget -= IceCubePrice
+            lemonadeStand.purchaseIceCube(1, price: IceCubePrice)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
     }
@@ -89,8 +84,7 @@ class ViewController: UIViewController {
     
     @IBAction func purchaseIceCubeDeleteButtonPressed(sender: UIButton) {
         if (lemonadeStand.iceCubes > 1) {
-            --lemonadeStand.iceCubes
-            lemonadeStand.budget += IceCubePrice
+            lemonadeStand.unPurchaseIceCube(1, price: IceCubePrice)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
     }
@@ -100,8 +94,7 @@ class ViewController: UIViewController {
         //Add  new Lemon to the Mix. Make sure that you can add 
         //lemons that don't exceed the amount of lemons we have available
         if (lemonadeStand.lemons > 0) {
-            ++lemonadeStand.lemonsMixNumber
-            --lemonadeStand.lemons
+            lemonadeStand.addLemonToMix(1)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
     }
@@ -109,8 +102,7 @@ class ViewController: UIViewController {
     
     @IBAction func mixLemonsDeleteButtonPressed(sender: UIButton) {
         if (lemonadeStand.lemonsMixNumber - 1 >= 0) {
-            --lemonadeStand.lemonsMixNumber
-            ++lemonadeStand.lemons
+            lemonadeStand.removeLemonFromMix(1)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
     }
@@ -118,8 +110,7 @@ class ViewController: UIViewController {
     
     @IBAction func mixIceCubesAddButtonPressed(sender: UIButton) {
         if (lemonadeStand.iceCubes > 0) {
-            ++lemonadeStand.iceCubeMixNumber
-            --lemonadeStand.iceCubes
+            lemonadeStand.addIceCubeToMix(1)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
     }
@@ -127,8 +118,7 @@ class ViewController: UIViewController {
     
     @IBAction func mixIceCubesDeleteButtonPressed(sender: UIButton) {
         if (lemonadeStand.iceCubeMixNumber - 1 >= 0) {
-            --lemonadeStand.iceCubeMixNumber
-            ++lemonadeStand.iceCubes
+            lemonadeStand.removeIceCubeFromMix(1)
             self.updateLemonadeStandLabels(lemonadeStand)
         }
     }
@@ -144,6 +134,7 @@ class ViewController: UIViewController {
         
         var customers:[Double] = []
         
+        println("Number of customers generated is: \(numCustomers)")
         for var i = 0; i < numCustomers; i++ {
             
         }
@@ -160,12 +151,12 @@ class ViewController: UIViewController {
     func updateLemonadeStandLabels(stand: LemonadeDay) {
         
         //Do the Lemon labels
-        self.haveNumerOfLeminsLabel.text = "\(stand.lemons)"
-        self.purchasedLemonsLabel.text = "\(stand.lemons - 1)"
+        self.haveNumerOfLeminsLabel.text = "\(stand.lemons) Lemon(s)"
+        self.purchasedLemonsLabel.text = "\(stand.lemonsPurchased)"
         
         //Do the ice cube labels
-        self.haveNumberOfIceCubesLabel.text = "\(lemonadeStand.iceCubes)"
-        self.purchaseIceCubesLabel.text = "\(stand.iceCubes)"
+        self.haveNumberOfIceCubesLabel.text = "\(lemonadeStand.iceCubes) IceCube(s)"
+        self.purchaseIceCubesLabel.text = "\(stand.iceCubesPurchased)"
         
         
         //lemons and icecubes mix number labels
