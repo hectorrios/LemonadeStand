@@ -41,6 +41,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 //        self.purchasedLemonsLabel.text = "\(self.lemonsPurchasedNumber)"
         self.updateLemonadeStandLabels(lemonadeStand)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +59,8 @@ class ViewController: UIViewController {
         if (self.canBuyIngredient(lemonadeStand.budget, amoutOfIngredient: LemonPrice)) {
             lemonadeStand.purchaseLemon(1, price: LemonPrice)
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            showAlertWithText(header: "Out of Budget", message: "No more money left to buy lemons")
         }
         
     }
@@ -126,18 +129,68 @@ class ViewController: UIViewController {
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
         
-        let mixRatio = lemonadeStand.generateMixRatio()
-        println("The mix ratio is \(mixRatio)")
         
         //randon number of customers
         let numCustomers = Int(arc4random_uniform(UInt32(11)))
         
-        var customers:[Double] = []
-        
         println("Number of customers generated is: \(numCustomers)")
-        for var i = 0; i < numCustomers; i++ {
+        
+        //check to see that Lemons and Icecubes have been added to the Mix for today
+        if (lemonadeStand.lemonsMixNumber == 0 || lemonadeStand.iceCubeMixNumber == 0) {
+            showAlertWithText(message: "You have to add some lemons and ice cubes to the Mix")
+        } else {
+            let mixRatio = lemonadeStand.generateMixRatio()
+            println("The mix ratio is \(mixRatio)")
+            
+            
+            for x in 0...numCustomers {
+                let customerPreference = self.generateRandomCustomerPreference()
+                
+                if customerPreference < 0.4 && mixRatio > 1.0 {
+                    //Get paid a dollar and print something out
+                    lemonadeStand.budget += 1
+                    println("Customer Preference \(customerPreference) for mix ratio \(mixRatio) Paid")
+                } else if (customerPreference > 0.4 && customerPreference <= 0.6 && mixRatio == 1) {
+                    lemonadeStand.budget += 1
+                    
+                    println("Customer Preference \(customerPreference) for mix ratio \(mixRatio) Paid")
+                } else if customerPreference > 0.6 && mixRatio < 1.0 {
+                    lemonadeStand.budget += 1
+                    println("Customer Preference \(customerPreference) for mix ratio \(mixRatio) Paid")
+                } else {
+                    println("Customer Preference \(customerPreference) for mix ratio \(mixRatio) Not Paid")
+                }
+                
+                //            //compare tastePreference to range
+                //            switch customerPreference {
+                //            case 0...0.4:
+                //                println("In first range")
+                //            case 0.4...0.6:
+                //                println("In second range")
+                //            default:
+                //                println("Everything above 0.6")
+                //            }
+                
+                //compare mix ratio
+                //            if mixRatio > 1 { //Acidic Lemonade
+                //                println("Acidic Lemonade")
+                //            } else if mixRatio == 1 { //Equal proportioned Lemonade
+                //                println("Equal proportioned Lemonade")
+                //            } else { //diluted lemomade
+                //                println("Diluted Lemonade")
+                //            }
+                
+                self.updateLemonadeStandLabels(lemonadeStand)
+                
+            }
+            
+            lemonadeStand.lemonsMixNumber = 0
+            lemonadeStand.iceCubeMixNumber = 0
+            
+            self.updateLemonadeStandLabels(lemonadeStand)
             
         }
+        
         
     }
     
@@ -151,6 +204,7 @@ class ViewController: UIViewController {
     func updateLemonadeStandLabels(stand: LemonadeDay) {
         
         //Do the Lemon labels
+        self.haveMoneyLabel.text = "$\(stand.budget)"
         self.haveNumerOfLeminsLabel.text = "\(stand.lemons) Lemon(s)"
         self.purchasedLemonsLabel.text = "\(stand.lemonsPurchased)"
         
@@ -163,7 +217,18 @@ class ViewController: UIViewController {
         self.lemonsMixLabel.text = "\(stand.lemonsMixNumber)"
         self.iceCubesMixLabel.text = "\(stand.iceCubeMixNumber)"
         
-        self.haveMoneyLabel.text = "\(stand.budget)"
+    }
+    
+    func generateRandomCustomerPreference() -> Double {
+        
+        return Double(arc4random_uniform(UInt32(101))) /  Double(100)
+    }
+    
+    func showAlertWithText(header:String = "Warning",message:String) {
+        var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }
