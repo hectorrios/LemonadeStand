@@ -130,7 +130,7 @@ class ViewController: UIViewController {
         println("The mix ratio is \(mixRatio)")
         
         //randon number of customers
-        let numCustomers = Int(arc4random_uniform(UInt32(10)))
+        let numCustomers = Int(arc4random_uniform(UInt32(11)))
         
         var customers:[Double] = []
         
