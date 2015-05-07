@@ -150,7 +150,7 @@ class ViewController: UIViewController {
                     //Get paid a dollar and print something out
                     lemonadeStand.budget += 1
                     println("Customer Preference \(customerPreference) for mix ratio \(mixRatio) Paid")
-                } else if (customerPreference > 0.4 && customerPreference <= 0.6 && mixRatio == 1) {
+                } else if (customerPreference >= 0.4 && customerPreference <= 0.6 && mixRatio == 1) {
                     lemonadeStand.budget += 1
                     
                     println("Customer Preference \(customerPreference) for mix ratio \(mixRatio) Paid")
