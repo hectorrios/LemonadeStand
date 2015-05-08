@@ -68,9 +68,11 @@ class ViewController: UIViewController {
     
     @IBAction func purchaseLemonDeleteButtonPressed(sender: UIButton) {
         
-        if (lemonadeStand.lemons > 1) {
+        if (lemonadeStand.lemons > 0) {
             lemonadeStand.unpurchaseLemon(1, price: LemonPrice)
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            self.showAlertWithText(message: "You don't have anything to return")
         }
         
     }
@@ -86,9 +88,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func purchaseIceCubeDeleteButtonPressed(sender: UIButton) {
-        if (lemonadeStand.iceCubes > 1) {
+        if (lemonadeStand.iceCubes > 0) {
             lemonadeStand.unPurchaseIceCube(1, price: IceCubePrice)
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            self.showAlertWithText(message: "You don't have anything to return")
         }
     }
     
