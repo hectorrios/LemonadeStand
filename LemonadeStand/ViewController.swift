@@ -103,16 +103,22 @@ class ViewController: UIViewController {
         //Add  new Lemon to the Mix. Make sure that you can add 
         //lemons that don't exceed the amount of lemons we have available
         if (lemonadeStand.lemons > 0) {
+            lemonadeStand.lemonsPurchased = 0
             lemonadeStand.addLemonToMix(1)
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            showAlertWithText(message: "You don't have enough inventory")
         }
     }
     
     
     @IBAction func mixLemonsDeleteButtonPressed(sender: UIButton) {
-        if (lemonadeStand.lemonsMixNumber - 1 >= 0) {
+        if (lemonadeStand.lemonsMixNumber > 0) {
+            lemonadeStand.lemonsPurchased = 0
             lemonadeStand.removeLemonFromMix(1)
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            showAlertWithText(message: "You have nothing to un-mix")
         }
     }
     
@@ -120,15 +126,21 @@ class ViewController: UIViewController {
     @IBAction func mixIceCubesAddButtonPressed(sender: UIButton) {
         if (lemonadeStand.iceCubes > 0) {
             lemonadeStand.addIceCubeToMix(1)
+            lemonadeStand.iceCubesPurchased = 0
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            showAlertWithText(message: "You don't have enough inventory")
         }
     }
     
     
     @IBAction func mixIceCubesDeleteButtonPressed(sender: UIButton) {
-        if (lemonadeStand.iceCubeMixNumber - 1 >= 0) {
+        if (lemonadeStand.iceCubeMixNumber > 0) {
             lemonadeStand.removeIceCubeFromMix(1)
+            lemonadeStand.iceCubesPurchased = 0
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            showAlertWithText(message: "You have nothing to un-mix")
         }
     }
 
