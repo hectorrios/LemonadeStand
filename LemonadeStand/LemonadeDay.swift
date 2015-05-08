@@ -28,6 +28,13 @@ class LemonadeDay {
         budget = budgetStartValue
     }
     
+    func resetMixAndItemsPurchased() {
+        self.lemonsPurchased = 0
+        self.iceCubesPurchased = 0
+        self.lemonsMixNumber = 0
+        self.iceCubeMixNumber = 0
+    }
+    
     func generateMixRatio() -> Double {
         //Lemons over ice cubes
         return Double(self.lemonsMixNumber) / Double(self.iceCubeMixNumber)
@@ -67,7 +74,7 @@ class LemonadeDay {
     
     func unPurchaseIceCube(amount:Int, price:Int) {
         self.iceCubes -= amount
-        self.lemonsPurchased -= amount
+        self.iceCubesPurchased -= amount
         self.budget += price
     }
     

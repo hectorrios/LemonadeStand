@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     
     @IBAction func purchaseLemonDeleteButtonPressed(sender: UIButton) {
         
-        if (lemonadeStand.lemons > 0) {
+        if (lemonadeStand.lemonsPurchased > 0) {
             lemonadeStand.unpurchaseLemon(1, price: LemonPrice)
             self.updateLemonadeStandLabels(lemonadeStand)
         } else {
@@ -83,12 +83,14 @@ class ViewController: UIViewController {
         if (self.canBuyIngredient(lemonadeStand.budget, amoutOfIngredient: 1)) {
             lemonadeStand.purchaseIceCube(1, price: IceCubePrice)
             self.updateLemonadeStandLabels(lemonadeStand)
+        } else {
+            showAlertWithText(header: "Out of Budget", message: "No more money left to buy ice cubes")
         }
     }
     
     
     @IBAction func purchaseIceCubeDeleteButtonPressed(sender: UIButton) {
-        if (lemonadeStand.iceCubes > 0) {
+        if (lemonadeStand.iceCubesPurchased > 0) {
             lemonadeStand.unPurchaseIceCube(1, price: IceCubePrice)
             self.updateLemonadeStandLabels(lemonadeStand)
         } else {
@@ -188,8 +190,8 @@ class ViewController: UIViewController {
                 
             }
             
-            lemonadeStand.lemonsMixNumber = 0
-            lemonadeStand.iceCubeMixNumber = 0
+            //reset the lemonade mix values and items purchased
+            lemonadeStand.resetMixAndItemsPurchased()
             
             self.updateLemonadeStandLabels(lemonadeStand)
             
