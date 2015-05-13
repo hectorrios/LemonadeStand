@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var iceCubesMixLabel: UILabel!
     
+    @IBOutlet weak var weatherImageView: UIImageView!
+    
     var lemonadeStand = LemonadeDay()
     var lemonsPurchasedNumber = 0
     var haveMoneyAmount = 10
@@ -40,7 +42,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        self.purchasedLemonsLabel.text = "\(self.lemonsPurchasedNumber)"
-        self.updateLemonadeStandLabels(lemonadeStand)
+        self.updateMainView(lemonadeStand)
         
     }
 
@@ -58,7 +60,7 @@ class ViewController: UIViewController {
         //Determine if we have enough money?
         if (self.canBuyIngredient(lemonadeStand.budget, amoutOfIngredient: LemonPrice)) {
             lemonadeStand.purchaseLemon(1, price: LemonPrice)
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             showAlertWithText(header: "Out of Budget", message: "No more money left to buy lemons")
         }
@@ -70,7 +72,7 @@ class ViewController: UIViewController {
         
         if (lemonadeStand.lemonsPurchased > 0) {
             lemonadeStand.unpurchaseLemon(1, price: LemonPrice)
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             self.showAlertWithText(message: "You don't have anything to return")
         }
@@ -82,7 +84,7 @@ class ViewController: UIViewController {
         //Determine if we have enough money
         if (self.canBuyIngredient(lemonadeStand.budget, amoutOfIngredient: 1)) {
             lemonadeStand.purchaseIceCube(1, price: IceCubePrice)
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             showAlertWithText(header: "Out of Budget", message: "No more money left to buy ice cubes")
         }
@@ -92,7 +94,7 @@ class ViewController: UIViewController {
     @IBAction func purchaseIceCubeDeleteButtonPressed(sender: UIButton) {
         if (lemonadeStand.iceCubesPurchased > 0) {
             lemonadeStand.unPurchaseIceCube(1, price: IceCubePrice)
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             self.showAlertWithText(message: "You don't have anything to return")
         }
@@ -105,7 +107,7 @@ class ViewController: UIViewController {
         if (lemonadeStand.lemons > 0) {
             lemonadeStand.lemonsPurchased = 0
             lemonadeStand.addLemonToMix(1)
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             showAlertWithText(message: "You don't have enough inventory")
         }
@@ -116,7 +118,7 @@ class ViewController: UIViewController {
         if (lemonadeStand.lemonsMixNumber > 0) {
             lemonadeStand.lemonsPurchased = 0
             lemonadeStand.removeLemonFromMix(1)
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             showAlertWithText(message: "You have nothing to un-mix")
         }
@@ -127,7 +129,7 @@ class ViewController: UIViewController {
         if (lemonadeStand.iceCubes > 0) {
             lemonadeStand.addIceCubeToMix(1)
             lemonadeStand.iceCubesPurchased = 0
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             showAlertWithText(message: "You don't have enough inventory")
         }
@@ -138,7 +140,7 @@ class ViewController: UIViewController {
         if (lemonadeStand.iceCubeMixNumber > 0) {
             lemonadeStand.removeIceCubeFromMix(1)
             lemonadeStand.iceCubesPurchased = 0
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
         } else {
             showAlertWithText(message: "You have nothing to un-mix")
         }
@@ -198,14 +200,14 @@ class ViewController: UIViewController {
                 //                println("Diluted Lemonade")
                 //            }
                 
-                self.updateLemonadeStandLabels(lemonadeStand)
+                self.updateMainView(lemonadeStand)
                 
             }
             
             //reset the lemonade mix values and items purchased
             lemonadeStand.resetMixAndItemsPurchased()
             
-            self.updateLemonadeStandLabels(lemonadeStand)
+            self.updateMainView(lemonadeStand)
             
         }
         
@@ -219,7 +221,7 @@ class ViewController: UIViewController {
         return ((budgetRemaining - amoutOfIngredient) >= 0)
     }
     
-    func updateLemonadeStandLabels(stand: LemonadeDay) {
+    func updateMainView(stand: LemonadeDay) {
         
         //Do the Lemon labels
         self.haveMoneyLabel.text = "$\(stand.budget)"
@@ -234,6 +236,9 @@ class ViewController: UIViewController {
         //lemons and icecubes mix number labels
         self.lemonsMixLabel.text = "\(stand.lemonsMixNumber)"
         self.iceCubesMixLabel.text = "\(stand.iceCubeMixNumber)"
+        
+        //set the Weather Image View
+        self.weatherImageView.image = UIImage(named: "LemonadeStandImages/cold.png")
         
     }
     
