@@ -151,16 +151,19 @@ class ViewController: UIViewController {
 
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
-
         
-        //as a test, make a few runs for the weather image function to make sure that the
-        //index is valid (between 0 inclusive and 2)
-        for x in 0...50 {
-            self.getWeatherImage()
-        }
+        //fetch the random weather
+        let weatherTuple = self.getWeatherImage()
+        
+        // set the weather image
+        self.weatherImageView.image = weatherTuple.image
         
         //randon number of customers
-        let numCustomers = Int(arc4random_uniform(UInt32(11)))
+        var numCustomers = Int(arc4random_uniform(UInt32(11)))
+        println("Number of customers generated is: \(numCustomers)")
+        
+        numCustomers = self.recalculateCustomerNumByWeather(numCustomers, weather: weatherTuple.description)
+        println("Number of recalculate customers is: \(numCustomers)")
         
         println("Number of customers generated is: \(numCustomers)")
         
@@ -247,7 +250,7 @@ class ViewController: UIViewController {
         self.iceCubesMixLabel.text = "\(stand.iceCubeMixNumber)"
         
         //set the Weather Image View
-        self.weatherImageView.image = UIImage(named: "LemonadeStandImages/cold.png")
+        //self.weatherImageView.image = UIImage(named: "LemonadeStandImages/cold.png")
         
     }
     
@@ -267,6 +270,26 @@ class ViewController: UIViewController {
         //generate a random integer between 0 and the size of the weather images array
         let index = Int (arc4random_uniform(UInt32(weatherImages.count)))
         return self.weatherImages[index]
+    }
+    
+    func recalculateCustomerNumByWeather(numCustomers:Int, weather:String) -> Int {
+        
+        var recalculatedCustomerNum: Int
+        
+        switch weather {
+        case "warm":
+            recalculatedCustomerNum = numCustomers + 4
+        case "mild":
+            recalculatedCustomerNum = numCustomers
+        default:
+            if (numCustomers < 3) {
+                recalculatedCustomerNum = 0
+            } else {
+                recalculatedCustomerNum = numCustomers - 3
+            }
+        }
+        
+        return recalculatedCustomerNum
     }
     
 }
