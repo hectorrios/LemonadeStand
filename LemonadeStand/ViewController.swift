@@ -36,6 +36,9 @@ class ViewController: UIViewController {
     let LemonPrice = 2
     let IceCubePrice = 1
     
+    //Array of Tuples where each tuple has an image (UIImage) and a description of the weather (description)
+    let weatherImages = [(image: UIImage(named: "LemonadeStandImages/cold.png"), description: "cold") , (image: UIImage(named: "LemonadeStandImages/mild.png"), description: "mild"), (image: UIImage(named: "LemonadeStandImages/warm.png"), description: "warm")]
+    
     // MARK: Lifecycle functins
     
     override func viewDidLoad() {
@@ -148,7 +151,13 @@ class ViewController: UIViewController {
 
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
+
         
+        //as a test, make a few runs for the weather image function to make sure that the
+        //index is valid (between 0 inclusive and 2)
+        for x in 0...50 {
+            self.getWeatherImage()
+        }
         
         //randon number of customers
         let numCustomers = Int(arc4random_uniform(UInt32(11)))
@@ -252,6 +261,12 @@ class ViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func getWeatherImage() -> (image: UIImage?, description: String) {
+        //generate a random integer between 0 and the size of the weather images array
+        let index = Int (arc4random_uniform(UInt32(weatherImages.count)))
+        return self.weatherImages[index]
     }
     
 }
