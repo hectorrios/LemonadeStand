@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     let IceCubePrice = 1
     
     //Array of Tuples where each tuple has an image (UIImage) and a description of the weather (description)
-    let weatherImages = [(image: UIImage(named: "LemonadeStandImages/cold.png"), description: "cold") , (image: UIImage(named: "LemonadeStandImages/mild.png"), description: "mild"), (image: UIImage(named: "LemonadeStandImages/warm.png"), description: "warm")]
+    let weatherImages = [(image: UIImage(named: "LemonadeStandImages/Cold.png"), description: "cold") , (image: UIImage(named: "LemonadeStandImages/Mild.png"), description: "mild"), (image: UIImage(named: "LemonadeStandImages/Warm.png"), description: "warm")]
     
     // MARK: Lifecycle functins
     
